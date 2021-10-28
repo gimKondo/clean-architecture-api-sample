@@ -18,11 +18,12 @@ class SongExplorerByAPI(SongExplorer):
             "limit": "10",
         }
         songs = self.client.search(params)
-        return [self._parse_search_result(e) for e in songs.get("results")]
+        results = songs.get("results") or []
+        return [self._parse_search_result(e) for e in results]
 
     def _parse_search_result(self, result: Dict) -> Song:
         return Song(
-            name=result.get("trackName"),
+            name=result.get("trackName") or "Unknown",
             artist_name=result.get("artistName"),
             album_name=result.get("collectionName"),
             provider_service_name="iTunes",
