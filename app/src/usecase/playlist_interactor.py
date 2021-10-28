@@ -1,13 +1,17 @@
 from ..entity.playlist import Playlist
 from .playlist_repository import PlaylistRepository
+from .song_explorer import SongExplorer
 
 
 class PlaylistInteractor:
-    def __init__(self, repository: PlaylistRepository):
+    def __init__(self, repository: PlaylistRepository, song_explorer: SongExplorer):
         self.repository = repository
+        self.song_explorer = song_explorer
 
     def generate_smartly(self, keyword: str) -> Playlist:
         """キーワードからいい感じにプレイリストを作る
+
+        - プレイリストの作成
 
         Args:
             keyword (str): プレイリストを生成するためのキーワード
@@ -16,6 +20,7 @@ class PlaylistInteractor:
             Playlist: プレイリスト
         """
 
-        playlist = Playlist(id="dummy", name="Favorite1", songs=[])
+        songs = self.song_explorer.explore(keyword)
+        playlist = Playlist(id="dummy", name="Favorite1", songs=songs)
         self.repository.register(playlist)
         return playlist
