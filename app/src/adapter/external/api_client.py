@@ -4,5 +4,5 @@ from typing import Any, Dict
 
 class ApiClient(ABC):
     @abstractmethod
-    def search(self, query: str) -> Dict[str, Any]:
+    def search(self, params: Dict[str, str]) -> Dict[str, Any]:
         pass

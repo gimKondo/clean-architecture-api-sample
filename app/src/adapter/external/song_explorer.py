@@ -10,8 +10,14 @@ class SongExplorerByAPI(SongExplorer):
         self.client = client
 
     def explore(self, keyword: str) -> List[Song]:
-        query = f"?term={keyword}&country=jp&media=music&entity=song&limit=10"
-        songs = self.client.search(query)
+        params = {
+            "term": keyword,
+            "country": "jp",
+            "media": "music",
+            "entity": "song",
+            "limit": "10",
+        }
+        songs = self.client.search(params)
         return [self._parse_search_result(e) for e in songs.get("results")]
 
     def _parse_search_result(self, result: Dict) -> Song:
