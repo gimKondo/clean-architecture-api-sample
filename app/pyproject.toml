@@ -8,6 +8,8 @@ authors = ["Kondo Daisuke <gim0kondo@gmail.com>"]
 python = "^3.8" # 実際に利用するPythonのバージョンを指定
 requests = "^2.26.0"
 pydantic = "^1.8.2"
+fastapi = "^0.70.0"
+uvicorn = "^0.15.0"
 
 [tool.poetry.dev-dependencies]
 flake8 = "*"
