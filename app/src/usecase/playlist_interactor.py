@@ -8,12 +8,13 @@ class PlaylistInteractor:
         self.repository = repository
         self.song_explorer = song_explorer
 
-    def generate_smartly(self, keyword: str) -> Playlist:
+    def generate_smartly(self, name: str, keyword: str) -> Playlist:
         """キーワードからいい感じにプレイリストを作る
 
         - プレイリストの作成
 
         Args:
+            name (str): プレイリスト名
             keyword (str): プレイリストを生成するためのキーワード
 
         Returns:
@@ -21,6 +22,6 @@ class PlaylistInteractor:
         """
 
         songs = self.song_explorer.explore(keyword)
-        playlist = Playlist(id="dummy", name="Favorite1", songs=songs)
+        playlist = Playlist(id="dummy", name=name, songs=songs)
         self.repository.register(playlist)
         return playlist
