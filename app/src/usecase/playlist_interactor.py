@@ -22,7 +22,7 @@ class PlaylistInteractor:
         """
 
         songs = self.song_explorer.explore(keyword)
-        playlist = Playlist(name=name, songs=songs)
+        playlist = Playlist(id=None, name=name, songs=songs)
         id = self.repository.register(playlist)
         playlist.id = id
         return playlist
