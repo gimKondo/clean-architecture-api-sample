@@ -15,7 +15,7 @@ class PlaylistRepositoryMock(PlaylistRepository):
         id = 1
         copied = dataclasses.replace(playlist, id=id)
         self.playlists.append(copied)
-        return id
+        return f"{id}"
 
 
 class SongExplorerMock(SongExplorer):
