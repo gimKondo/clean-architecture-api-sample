@@ -4,7 +4,6 @@ from typing import Optional
 
 @dataclass
 class Song:
-    id: str
     name: str
     artist_name: Optional[str]
     album_name: Optional[str]
