@@ -21,3 +21,6 @@ check:
 	make test
 	make lint
 	make audit
+
+run:
+	poetry run uvicorn src.main:app --reload --host 0.0.0.0
