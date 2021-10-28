@@ -1,0 +1,25 @@
+@startuml
+
+title 呼び出しフロー
+hide footbox
+
+participant ブラウザ as Browser <<Client>>
+participant WebRouter as "Web API Router" <<Freamowrk>>
+participant Controller as "Controller" <<Adapter>>
+participant Interactor as "Interactor" <<Usecase>>
+participant Entity as "Playlist" <<Entity>>
+participant Repository as "Repository" <<Adapter>>
+participant DatabaseClient as "DatabaseClient" <<Driver>>
+
+Browser -> WebRouter: API呼び出し
+WebRouter -> Controller: 処理割当
+Controller -> Interactor: アプリケーションロジックの実行
+Interactor -> Entity: エンティティの作成
+Interactor -> Repository: データ永続化処理
+Repository -> DatabaseClient: データ書き込み
+Controller <- Interactor: 処理結果を返す
+WebRouter <- Controller
+Browser <- WebRouter: レスポンス
+
+
+@enduml
